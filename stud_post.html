@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Your custom styles -->
+    <link rel="stylesheet" href="boot/css/style.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="boot/icons/font/bootstrap-icons.css">
+
+
+<script defer src="boot/js/bootstrap.bundle.min.js" ></script>
+
+
+    
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        #create-post-container {
+            margin-top: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
+
+
+
+
+</head>
+<body>
+
+    <section>
+        <nav class="navbar navbar-expand-lg" style="background-color: rgb(189, 241, 241);">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">TutorConnect</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="student_own.html">Dashboard</a>
+                        </li>
+                       
+                        <li class="nav-item">
+                            <a class="nav-link active" href="view_post.html">View post</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+        
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Login 
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="login_std.html">As Student</a></li>
+                                <li><a class="dropdown-item" href="login_tutor.html">As Teacher</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+
+
+    <div id="create-post-container" class="container">
+        <h2>Create New Tuition Post</h2>
+
+        <form >
+            
+            <div class="form-group">
+                <label for="Title">Title:</label>
+                <input type="text" class="form-control" id="Title" name="Title" placeholder="Enter a title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Description">Description:</label>
+                <textarea class="form-control" id="Description" name="Description" rows="4" placeholder="Enter a description" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="Subject">Subject:</label>
+                <input type="text" class="form-control" id="Subject" name="Subject" placeholder="Enter the subject" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Location">Location:</label>
+                <input type="text" class="form-control" id="Location" name="Location" placeholder="Enter the location" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ContactInformation">Contact Information:</label>
+                <input type="number" class="form-control" id="ContactInformation" name="ContactInformation" placeholder="Enter contact information" required>
+            </div>
+
+            <div class="form-group">
+                <label for="PostedDate">Posted Date:</label>
+                <input type="datetime-local" class="form-control" id="PostedDate" name="PostedDate" required>
+            </div>
+
+   
+
+            <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;"  onclick="submitForm(event)">Create Post</button>
+        </form>
+    </div>
+
+    <footer class="footer mt-auto py-3" style="background-color: rgb(189, 241, 241);">
+        <div class="container text-center">
+            <span class="text-muted">TutorConnect &copy; 2023</span>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js 
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+
+    <    <script>
+        function submitForm(event) {
+            event.preventDefault();
+    
+            console.log('Button clicked!');
+    
+           
+            var Title = document.getElementById('Title').value;
+            var Description = document.getElementById('Description').value;
+            var Subject = document.getElementById('Subject').value;
+            var Location = document.getElementById('Location').value;
+            var ContactInformation = document.getElementById('ContactInformation').value;
+            var PostedDate = document.getElementById('PostedDate').value;
+    
+            var formData = new FormData();
+    
+        //   alert(localStorage.getItem('StudentID'))
+        
+            formData.append('Title', Title);
+            formData.append('Description', Description);
+            formData.append('Subject', Subject);
+            formData.append('Location', Location);
+            formData.append('ContactInformation', ContactInformation);
+            formData.append('PostedDate', PostedDate);  // Include the date in the formData
+    formData.append('StudentID',localStorage.getItem('StudentID')); 
+            var jsonData = {};
+            for (var pair of formData.entries()) {
+                jsonData[pair[0]] = pair[1];
+            }
+    
+            console.log('JSON data:', jsonData);
+    
+           
+            // ... (your existing code)
+    
+            const apiUrl = 'http://localhost:5068/api/post/PostTutor';
+    
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(jsonData),
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+            })
+            .then(data => {
+                // let stud_ID=document.getElementById("StudentId").value;     
+                     
+                // localStorage.setItem('StudentID',element.studentId)
+                // console.log('Post added successfully. StudentID:', data.studentId);
+                alert('Post added Successfully');
+                // Redirect to the view_post.html page with the new StudentID
+                location.href = "/view_post.html";
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    
+            return false; // Prevent default form submission
+        }
+            </script>
+    
+    
+
+
+    
+</body>
+</html>

@@ -1,0 +1,99 @@
+
+
+.navbar .navbar-brand{
+    width: 300px;
+}
+
+
+/* .navbar {
+background-color: #e23535;
+} */
+
+
+/* .bg-img-area{
+    width:100%;
+    height:80vh;
+    background-image: url('../images/tu.jpg');
+     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position:relative;
+     display: flex; 
+    justify-content: center;
+    align-items: center; 
+} */
+
+/* .bg-img-area .over-layer{
+    width:100%;
+    height:100%;
+    background-color: rgb(94, 110, 108);
+    opacity: 0.7;
+    position: absolute;
+} */
+
+
+
+.container {
+   
+    width: 80%;
+}
+
+.btn .btn-primary{
+text-align: center;
+}
+
+.dropdown{
+    padding-left: 60px;
+}
+
+  
+
+
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-left: 0;
+    padding-right: 73px;
+}
+
+
+.mb-4{
+    margin-bottom: 100px;
+
+}
+
+
+/* .header-content {
+    max-width: 600px;
+} */
+
+.head {
+    background-image: url('/boot/images/tu.jpg'); /* Replace with your image file */
+    background-size: cover;
+    background-position: center;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+
+
+
+.aa{
+    
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #4cafa7;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    
+}
+
+.pp{
+    font-size: 20px;
+    font-style: oblique ;
+}

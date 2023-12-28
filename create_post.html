@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <!-- Add the Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- ... (your existing style links) ... -->
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        #dashboard-container {
+            margin-top: 50px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .form-container label {
+            font-weight: bold;
+        }
+
+        .form-container button {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ... (your existing body content) ... -->
+
+    <div id="dashboard-container" class="container text-center">
+        <!-- ... (your existing content) ... -->
+
+        <div class="col-md-6 offset-md-3 form-container">
+            <form class="mb-4" id="createPostForm">
+                <h3 class="mb-4">Create a Tutoring Post</h3>
+                <div class="form-group">
+                    <label for="postSubject">Subject</label>
+                    <input type="text" class="form-control" id="postSubject" placeholder="Enter subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="postContent">Content</label>
+                    <textarea class="form-control" id="postContent" rows="3" placeholder="Enter post content" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactInfo">Contact Information</label>
+                    <input type="text" class="form-control" id="contactInfo" placeholder="Enter your contact information" required>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <input type="text" class="form-control" id="location" placeholder="Enter your location" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select class="form-control" id="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dateTime">Date & Time</label>
+                    <input type="datetime-local" class="form-control" id="dateTime" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Post</button>
+            </form>
+        </div>
+
+        <!-- ... (your existing content) ... -->
+    </div>
+
+    <!-- Add the Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Your existing scripts and additional script for handling post creation -->
+    <script>
+        document.getElementById('createPostForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var postSubject = document.getElementById('postSubject').value;
+            var postContent = document.getElementById('postContent').value;
+            var fullName = document.getElementById('fullName').value;
+            var contactInfo = document.getElementById('contactInfo').value;
+            var location = document.getElementById('location').value;
+            var gender = document.getElementById('gender').value;
+            var dateTime = document.getElementById('dateTime').value;
+
+            // Use fetch to send a request to your server to handle post creation
+            fetch('http://your-server-api/posts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    subject: postSubject,
+                    content: postContent,
+                    fullName: fullName,
+                    contactInfo: contactInfo,
+                    location: location,
+                    gender: gender,
+                    dateTime: dateTime
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the response from the server (display results, etc.)
+                console.log(data);
+                alert('Post created successfully!');
+                // Clear the form fields after submission if needed
+                document.getElementById('postSubject').value = '';
+                document.getElementById('postContent').value = '';
+                document.getElementById('fullName').value = '';
+                document.getElementById('contactInfo').value = '';
+                document.getElementById('location').value = '';
+                document.getElementById('gender').value = 'male'; // Set a default value for gender
+                document.getElementById('dateTime').value = '';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error occurred while creating the post. Please try again later.');
+            });
+        });
+    </script>
+
+    <!-- ... (your existing scripts) ... -->
+</body>
+</html>

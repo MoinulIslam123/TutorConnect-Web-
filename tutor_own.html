@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutor Dashboard</title>
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="boot/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="boot/css/style.css" />
+    <link rel="stylesheet" href="boot/icons/font/bootstrap-icons.css">
+    <!-- Internal Styles -->
+    <style>
+        body {
+            background-color: #e2e6eb;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .tutor-card {
+            margin-bottom: 20px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            color: #555;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation Section -->
+<section>
+    <nav class="navbar navbar-expand-lg" style="background-color: rgb(189, 241, 241);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">TutorConnect</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Navigation Links -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="tutor_reg.html">Become A Tutor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="student_reg.html">Be A Student</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<!-- Tutor Dashboard Section -->
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">Tutor Dashboard</h2>
+            <div class="row" id="tutorGrid">
+                <!-- Tutor information will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tuition Posts Section -->
+<div class="container mt-4 text-center">
+    <h3 class="mb-4">Tuition Posts</h3>
+    <div class="row" id="tuition-posts-container">
+        <!-- Tuition posts will be dynamically added here -->
+    </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="footer mt-auto py-3" style="background-color: rgb(189, 241, 241);">
+    <div class="container text-center">
+        <span class="text-muted">TutorConnect &copy; 2023</span>
+    </div>
+</footer>
+
+
+    <!-- Function to dynamically generate the tutor grid --> 
+
+
+
+
+<script>
+        function generateTutorGrid(loggedInTutor) {
+           
+        }
+
+        function getLoggedInTutorEmailFromQuery() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('email');
+        }
+
+        var loggedInTutorEmail = getLoggedInTutorEmailFromQuery();
+
+        fetch(`http://localhost:5068/api/tutor_reg/GetTutorBybyEmail?mail=${loggedInTutorEmail}`)
+            .then(response => response.json())
+            .then(loggedInTutor => {
+               console.log(loggedInTutor);
+            var tutorGrid = document.getElementById('tutorGrid');
+
+            // Clear existing content
+            tutorGrid.innerHTML = "";
+
+            var tutorCard = document.createElement('div');
+            tutorCard.classList.add('col-md-6', 'col-lg-4');
+            tutorCard.innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">${loggedInTutor[0].tutorName}</h4>
+                        <p class="card-text"><strong>Contact:</strong> ${loggedInTutor[0].tutorContact}</p>
+                        <p class="card-text"><strong>NID Number:</strong> ${loggedInTutor[0].tutorNid}</p>
+                        <p class="card-text"><strong>Address:</strong> ${loggedInTutor[0].tutorAddress}</p>
+                        <p class="card-text"><strong>City:</strong> ${loggedInTutor[0].tutorCity}</p>
+                        <p class="card-text"><strong>Education:</strong> ${loggedInTutor[0].tutorEducation}</p>
+                        <p class="card-text"><strong>Experience:</strong> ${loggedInTutor[0].tutorExperience}</p>
+                    </div>
+                </div>
+            `;
+
+            tutorGrid.appendChild(tutorCard);
+            })
+            .catch(error => {
+                console.error('Error fetching tutor information:', error);
+            });
+    </script> 
+
+
+
+
+
+<script>
+    // Function to create a card for each tuition post in the newsfeed
+    function createNewsfeedTuitionPostCard(post) {
+        var card = document.createElement('div');
+        card.className = 'col-md-12 mb-4';
+        card.innerHTML = `
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">${post.title}</h5>
+                    <p class="card-text"><strong>Student ID:</strong> ${post.studentID}</p>
+                    <p class="card-text">${post.description}</p>
+                    <p class="card-text"><strong>Subject:</strong> ${post.subject}</p>
+                    <p class="card-text"><strong>Location:</strong> ${post.location}</p>
+                    <p class="card-text"><strong>Contact:</strong> ${post.contactInformation}</p>
+                    <p class="card-text"><strong>Posted Date:</strong> ${post.postedDate}</p>
+                    
+                    <!-- Button to express interest -->
+                    <button class="btn btn-primary express-interest-btn" data-post-id="${post.postID}">
+                        Express Interest
+                    </button>
+                </div>
+            </div>
+        `;
+        return card;
+    }
+
+    // Function to render tuition posts in the newsfeed
+    function renderNewsfeedTuitionPosts(tuitionPosts) {
+        var tuitionPostsContainer = document.getElementById('tuition-posts-container');
+
+        // Clear existing content
+        tuitionPostsContainer.innerHTML = '';
+
+        // Create and append card for each tuition post in the newsfeed
+        tuitionPosts.forEach(function(post) {
+            var card = createNewsfeedTuitionPostCard(post);
+            tuitionPostsContainer.appendChild(card);
+        });
+
+        // Add event listener for the Express Interest buttons
+        addExpressInterestListeners();
+    }
+
+   
+
+    // Function to add event listeners for Express Interest buttons
+    function addExpressInterestListeners() {
+        var expressInterestButtons = document.querySelectorAll('.express-interest-btn');
+
+        expressInterestButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var postID = this.getAttribute('data-post-id');
+                expressInterest(postID);
+            });
+        });
+    }
+
+    // Function to fetch tuition posts from the server for the newsfeed
+    function fetchNewsfeedTuitionPosts() {
+        const apiUrl = 'http://localhost:5068/api/post/GetPost';
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                // Call the renderNewsfeedTuitionPosts function with the fetched data
+                renderNewsfeedTuitionPosts(data);
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Call the fetchNewsfeedTuitionPosts function when the page loads
+    window.onload = function() {
+        fetchNewsfeedTuitionPosts();
+    };
+
+    // renderNewsfeedTuitionPosts(data); // You can uncomment this line if you want to render posts immediately on page load
+    // addExpressInterestListeners(); // You can uncomment this line if you want to add listeners immediately on page load
+</script>
+    
+
+
+
+
+</body>
+</html>

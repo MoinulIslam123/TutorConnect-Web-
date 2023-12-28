@@ -1,0 +1,160 @@
+-----------------::::::::::::::student post upload in tutor page:::::::::------------------------
+<script>
+        // Function to create a card for each tuition post
+        function createTuitionPostCard(post,index) {
+            console.log("data is+"+post);
+            var card = document.createElement('div');
+            card.className = 'col-md-6';
+            card.innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+
+                        <h5 class="card-title">${post.Title}</h5>
+                        <p class="card-text"><strong>Student ID:</strong> ${post.StudentID}</p>
+                        <p class="card-text">${post.Description}</p>
+                        <p class="card-text"><strong>Subject:</strong> ${post.Subject}</p>
+                        <p class="card-text"><strong>Location:</strong> ${post.Location}</p>
+                        <p class="card-text"><strong>Contact:</strong> ${post.ContactInformation}</p>
+                        <p class="card-text"><strong>Posted Date:</strong> ${post.PostedDate}</p>
+                    </div>
+                </div>
+            `;
+            return card;
+        }
+    
+        // Function to render tuition posts on the page
+        function renderTuitionPosts(tuitionPosts) {
+            var tuitionPostsContainer = document.getElementById('tuition-posts-container');
+    
+            // Clear existing content
+            tuitionPostsContainer.innerHTML = '';
+    
+            // Check the received data
+            console.log('Received data:', tuitionPosts);
+    
+            // Create and append card for each tuition post
+            tuitionPosts.forEach((post, index) => {
+    // Create a new div element for the card
+    var cardContainer = document.createElement('div');
+    cardContainer.className = 'col-md-6';
+
+    // Set inner HTML for the card
+    cardContainer.innerHTML = `
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">hello</h5>
+                <p class="card-text"><strong>Student ID:</strong> ${post.studentID}</p>
+                <p class="card-text">${post.description}</p>
+                <p class="card-text"><strong>Subject:</strong> ${post.subject}</p>
+                <p class="card-text"><strong>Location:</strong> ${post.location}</p>
+                <p class="card-text"><strong>Contact:</strong> ${post.contactInformation}</p>
+               
+                <p class="card-text"><strong>Posted Date:</strong> ${post.postedDate}</p>
+            </div>
+        </div>
+    `;
+
+    // Append the card to the tuition-posts-container
+    var tuitionPostsContainer = document.getElementById('tuition-posts-container');
+    tuitionPostsContainer.appendChild(cardContainer);
+});
+
+
+            // {
+            //     var card = createTuitionPostCard(post,index);
+            //     tuitionPostsContainer.appendChild(card);
+            // });
+        }
+    
+        // Function to fetch tuition posts from the server
+        function fetchTuitionPosts() {
+            const apiUrl = 'http://localhost:5068/api/post/GetPost';
+    
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Check the data before rendering
+                    console.log('Fetched data:', data);
+                    console.log("done")
+    
+                    // Call the renderTuitionPosts function with the fetched data
+                    renderTuitionPosts(data);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    
+        // Call the fetchTuitionPosts function when the page loads
+        window.onload = function() {
+            fetchTuitionPosts();
+        };
+    </script>
+
+
+-----------------::::::::::::::student post upload in tutor page:::::::::------------------------
+
+
+
+-------------view post----------------
+
+<!-- 
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Function to get the post ID from the URL
+                function getPostIDFromURL() {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    return urlParams.get('postID');
+                }
+
+                // Function to get the student ID from the URL
+                function getStudentIDFromURL() {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    return urlParams.get('studentID');
+                }
+
+                // Function to fetch post details based on post ID
+                function fetchPostDetails(studentID) {
+
+                    // Use your API URL to fetch post details
+                    const apiUrl = `http://localhost:5068/api/post/GetPostByStudentId/${studentID}`;
+
+                    fetch(apiUrl)
+                        .then(response => {
+                            if (response.ok) {
+                                return response.json();
+                            } else {
+                                throw new Error(`HTTP error! Status: ${response.status}`);
+                            }
+                        })
+                        .then(post => {
+
+
+                            const postDetailsContainer = document.getElementById('postDetails');
+                            postDetailsContainer.innerHTML = `
+                                <h3>${post.title}</h3>
+                                <p>${post.studentID}<p>
+                                <p>${post.description}</p>
+                                <p>Subject: ${post.subject}</p>
+                                <p>Location: ${post.location}</p>
+                                <p>Contact Information: ${post.contactInformation}</p>
+                                <p>Posted Date: ${post.postedDate}</p>
+                            `;
+                            console.log(postDetailsContainer);
+                            // Display post details on the page
+
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                }
+
+                // Get student ID from the URL and fetch post details
+                
+                const studentID= sessionStorage.getItem('studentID')
+                alert("The student id is" + studentID)
+                if (studentID) {
+                    fetchPostDetails(studentID);
+                } else {
+                    console.error('Post ID not found in the URL');
+                }
+            });
+        </script> -->

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Post</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Your custom styles -->
+    <link rel="stylesheet" href="boot/css/style.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="boot/icons/font/bootstrap-icons.css">
+
+
+<script defer src="boot/js/bootstrap.bundle.min.js" ></script>
+
+
+   
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h2 {
+            color: #007bff;
+            text-align: center;
+        }
+
+        .post-details {
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h3 {
+            color: #007bff;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .bt1 {
+            background-color: rgb(93, 212, 216);
+            margin-top: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+
+
+        <!-- Navbar -->
+
+        <section>
+            <nav class="navbar navbar-expand-lg" style="background-color: rgb(189, 241, 241);">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">TutorConnect</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="student_own.html">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="stud_post.html">Create Post</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+            
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <!-- Other nav items -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Login 
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="login_std.html">As Student</a></li>
+                                    <li><a class="dropdown-item" href="login_tutor.html">As Teacher</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+        <h2>Post Details</h2>
+        <div id="postDetails"></div>
+    </div>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+    <script>
+        let studentID = localStorage.getItem('StudentID');
+        const apiUrl = `http://localhost:5068/api/post/GetPostByStudentId/${studentID}`;
+    
+        fetch(apiUrl)
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+            })
+            .then((data) => {
+                const postDetailsContainer = document.getElementById('postDetails');
+    
+                // Clear existing content in the container
+                postDetailsContainer.innerHTML = '';
+    
+                // Iterate over each post and append details to the container
+                data.forEach((post) => {
+                    postDetailsContainer.innerHTML += `
+                        <div class="post-details">
+                            <h3>${post.title}</h3>
+                            <p class="text-muted">Student ID: ${post.studentID}</p>
+                            <p>${post.description}</p>
+                            <p>Subject: ${post.subject}</p>
+                            <p>Location: ${post.location}</p>
+                            <p>Contact Information: ${post.contactInformation}</p>
+                            <p>Posted Date: ${post.postedDate}</p>
+    
+                            <button class="bt1" onclick="editPost(${post.postID})">Edit</button>
+                            <button class="bt1" onclick="deletePost(${post.postID})">Delete</button>
+                        </div>
+                    `;
+                });
+            })
+            .catch(error => console.error('Error fetching posts:', error));
+    
+        function editPost(postId) {
+            const apiUrl = `http://localhost:5068/api/post/GetPostById/${postId}`;
+    
+            fetch(apiUrl)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                })
+                .then(post => {
+                    const editPostFormContainer = document.getElementById('postDetails');
+                    
+                    // Display an edit form with existing post details
+                    editPostFormContainer.innerHTML = `
+                        <form id="editForm" style="margin-top: 20px;">
+                            <label for="title">Title:</label>
+                            <input type="text" id="title" name="title" value="${post.title}" class="form-control" required>
+    
+                            <label for="description">Description:</label>
+                            <textarea id="description" name="description" class="form-control" required>${post.description}</textarea>
+    
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" name="subject" value="${post.subject}" class="form-control" required>
+    
+                            <label for="location">Location:</label>
+                            <input type="text" id="location" name="location" value="${post.location}" class="form-control" required>
+    
+                            <label for="contactInformation">Contact Information:</label>
+                            <input type="text" id="contactInformation" name="contactInformation" value="${post.contactInformation}" class="form-control" required>
+    
+                            <div style="margin-top: 20px;">
+                                <button type="button" class="btn btn-primary" onclick="updatePost(${post.postID})">Update</button>
+                                <button type="button" class="btn btn-secondary" onclick="cancelUpdate()">Cancel</button>
+                            </div>
+                        </form>
+                    `;
+                })
+                .catch(error => console.error('Error fetching post details:', error));
+        }
+    
+        function updatePost(postId) {
+            const updatedPost = {
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                subject: document.getElementById('subject').value,
+                location: document.getElementById('location').value,
+                contactInformation: document.getElementById('contactInformation').value,
+            };
+    
+            const apiUrl = `http://localhost:5068/api/post/UpdateTuitionPost?PostId=${postId}`;
+    
+            fetch(apiUrl, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedPost),
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.reload(); // Reload the page after successful update
+                } else {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+            })
+            .catch(error => console.error('Error updating post:', error));
+        }
+    
+        function cancelUpdate() {
+            // Implement the cancel functionality here
+            // For example, you can redirect the user to the view post page
+            window.location.href = '/view-post.html';
+        }
+    
+        function deletePost(postId) {
+            const apiUrl = `http://localhost:5068/api/post/DeleteTuitionPost?postID=${postId}`;
+    
+            fetch(apiUrl, {
+                method: 'DELETE',
+            })
+            .then(response => {
+                if (response.ok) {
+                    location.reload(); // Reload the page after successful deletion
+                } else {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+            })
+            .catch(error => console.error('Error deleting post:', error));
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

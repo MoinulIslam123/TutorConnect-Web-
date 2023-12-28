@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Your custom styles -->
+    <link rel="stylesheet" href="boot/css/style.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="boot/icons/font/bootstrap-icons.css">
+
+
+<script defer src="boot/js/bootstrap.bundle.min.js" ></script>
+
+
+
+   
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        #dashboard-container {
+            margin-top: 50px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+             margin-top: 20px;
+            margin-bottom: 20px;
+            /* padding-right: 60px;  */
+
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card-body {
+            padding: 20px;
+          
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            color: #555;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    
+        <!-- Navbar -->
+
+        <section>
+            <nav class="navbar navbar-expand-lg" style="background-color: rgb(189, 241, 241);">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">TutorConnect</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="view_post.html">View Post</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="stud_post.html">Create Post</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+            
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <!-- Other nav items -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Login 
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="login_std.html">As Student</a></li>
+                                    <li><a class="dropdown-item" href="login_tutor.html">As Teacher</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </section>
+
+    <div id="dashboard-container" class="container text-center">
+        <h2 class="mb-3">Welcome to Your Student Dashboard</h2>
+
+
+
+        
+            <!-- Display student information here -->
+            <div id="student-info"></div>
+    
+
+
+
+
+
+
+        <form class="mb-4">
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" class="form-control" id="subject" placeholder="Enter subject">
+                </div>
+                <div class="col-md-6">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="Enter city">
+                </div>
+                <div class="col-md-12 mt-3"> <!-- Added a new column for the button -->
+                    <button type="submit" class="btn btn-primary w-100">Search</button>
+                </div>
+            </div>
+        </form>
+
+
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Your Tuition Posts</h5>
+                        <p class="card-text">View and manage your tuition posts.</p>
+                        <a href="view_post.html" class="btn btn-primary">View Posts</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Connect with Tutors</h5>
+                        <p class="card-text">Create your post to find desirable Tutors </p>
+                        <!-- <a href="#" class="btn btn-primary">Find Tutors</a> -->
+                        <a href="stud_post.html" class="btn btn-primary">Create Post</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add more content based on your dashboard features -->
+    </div>
+
+
+
+
+  
+    <div class="container mt-4">
+        <div class="row row-cols-1 row-cols-md-2 g-4" id="tuition-posts-container">
+            <!-- Tuition posts will be dynamically added here -->
+        </div>
+    </div>
+
+
+
+
+
+    
+
+<footer class="footer mt-auto py-3" style="background-color: rgb(189, 241, 241);">
+    <div class="container text-center">
+        <span class="text-muted">TutorConnect &copy; 2023</span>
+    </div>
+</footer>
+ <!--  <p class="card-text">${post.StudentID}</p> -->
+    <!-- Bootstrap JS and Popper.js -->
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+    
+
+        
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Retrieve StudentID from localStorage
+            var studentID = localStorage.getItem('StudentID');
+            // alert(studentID);
+    
+            // Fetch student data using StudentID
+            fetch(`http://localhost:5068/api/reg/GetStudents?studentId=${studentID}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Update the DOM with student information
+                    displayStudentInfo(data);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error occurred while trying to fetch student data.');
+                });
+    
+        });
+    
+        function displayStudentInfo(studentData) {
+            // Update the DOM with student information
+            var studentInfoContainer = document.getElementById('student-info');
+    
+            studentInfoContainer.innerHTML = `
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Student Information</h5>
+                        <p class="card-text"><strong>Name:</strong> ${studentData[0].studentName}</p>
+                        <p class="card-text"><strong>Email:</strong> ${studentData[0].studentEmail}</p>
+                        <p class="card-text"><strong>Contact Number:</strong> ${studentData[0].parentContact}</p>
+                        <p class="card-text"><strong>Address:</strong> ${studentData[0].studentAddress}</p>
+                        <p class="card-text"><strong>City:</strong> ${studentData[0].studentCity}</p>
+                        <p class="card-text"><strong>Gender:</strong> ${studentData[0].studentGender}</p>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>
