@@ -100,15 +100,123 @@
                 <textarea class="form-control" id="Description" name="Description" rows="4" placeholder="Enter a description" required></textarea>
             </div>
 
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="Subject">Subject:</label>
                 <input type="text" class="form-control" id="Subject" name="Subject" placeholder="Enter the subject" required>
-            </div>
+            </div> -->
+
+
+
 
             <div class="form-group">
-                <label for="Location">Location:</label>
-                <input type="text" class="form-control" id="Location" name="Location" placeholder="Enter the location" required>
+                <label>Subject:</label>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="Bangla1" name="Subject[]" value="Bangla 1st Paper">
+                    <label class="form-check-label" for="Bangla1">Bangla 1st Paper</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="Bangla2" name="Subject[]" value="Bangla 2nd Paper">
+                    <label class="form-check-label" for="Bangla2">Bangla 2nd Paper</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="English1" name="Subject[]" value="English 1st Paper">
+                    <label class="form-check-label" for="English1">English 1st Paper</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="English2" name="Subject[]" value="English 2nd Paper">
+                    <label class="form-check-label" for="English2">English 2nd Paper</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="Math" name="Subject[]" value="Math">
+                    <label class="form-check-label" for="Math">Math</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="Religion" name="Subject[]" value="Religion">
+                    <label class="form-check-label" for="Religion">Religion</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="ICT" name="Subject[]" value="ICT">
+                    <label class="form-check-label" for="ICT">ICT</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="Physics" name="Subject[]" value="Physics">
+                    <label class="form-check-label" for="Physics">Physics</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="Chemistry" name="Subject[]" value="Chemistry">
+                    <label class="form-check-label" for="Chemistry">Chemistry</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="Biology" name="Subject[]" value="Biology">
+                    <label class="form-check-label" for="Biology">Biology</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="HigherMath" name="Subject[]" value="Higher Math">
+                    <label class="form-check-label" for="HigherMath">Higher Math</label>
+                </div> 
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="Accounting" name="Subject[]" value="Accounting">
+                    <label class="form-check-label" for="Accounting">Accounting</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="Finance" name="Subject[]" value="Finance">
+                    <label class="form-check-label" for="Finance">Finance</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="BusinessEntrepreneurship" name="Subject[]" value="Business Entrepreneurship">
+                    <label class="form-check-label" for="BusinessEntrepreneurship">Business Entrepreneurship</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="AgriculturalStudies" name="Subject[]" value="Agricultural Studies">
+                    <label class="form-check-label" for="AgriculturalStudies">Agricultural Studies</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="GeneralScience" name="Subject[]" value="General Science">
+                    <label class="form-check-label" for="GeneralScience">General Science</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input" id="BangladeshAndGlobalStudies" name="Subject[]" value="Bangladesh and Global Studies">
+                    <label class="form-check-label" for="BangladeshAndGlobalStudies">Bangladesh and Global Studies</label>
+                </div>
+                <!-- Add more checkboxes for each subject as needed -->
             </div>
+            
+
+
+
+
+
+
+
+
+
+
+            <div class="form-group ">
+                <label for="Location" class="form-label">Location:</label>
+                <select id="Location" name="Location" class="form-control" placeholder="Enter the location" required>
+                    <option value="Mirpur">Mirpur</option>
+                    <option value="Uttara">Uttara</option>
+                    <option value="Banani">Banani</option>
+                    <option value="Basundhara">Basundhara</option>
+                    <option value="Natun_Bazar">Natun Bazar</option>
+                    <option value="Badda">Badda</option>
+                    <option value="Tejgaon">Tejgaon</option>
+                    <option value="Baridhara">Baridhara</option>
+                    <option value="Khilkhet">Khilkhet</option>
+                    <option value="Malibag">Malibag</option>
+                    <option value="Razarbag">Razarbag</option>
+                    <option value="Shyamoli">Shyamoli</option>
+                    <option value="Mohammadpur">Mohammadpur</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+
+
+  
+
+
+
+
 
             <div class="form-group">
                 <label for="ContactInformation">Contact Information:</label>
@@ -126,18 +234,16 @@
         </form>
     </div>
 
-    <footer class="footer mt-auto py-3" style="background-color: rgb(189, 241, 241);">
-        <div class="container text-center">
-            <span class="text-muted">TutorConnect &copy; 2023</span>
-        </div>
-    </footer>
+      <!-- footer starts -->
+    
+       <!-- footer ends -->
 
     <!-- Bootstrap JS and Popper.js 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
 
-    <    <script>
+      <script>
         function submitForm(event) {
             event.preventDefault();
     
@@ -146,10 +252,15 @@
            
             var Title = document.getElementById('Title').value;
             var Description = document.getElementById('Description').value;
-            var Subject = document.getElementById('Subject').value;
+      
             var Location = document.getElementById('Location').value;
             var ContactInformation = document.getElementById('ContactInformation').value;
             var PostedDate = document.getElementById('PostedDate').value;
+
+
+
+            var checkboxes = document.querySelectorAll('input[name="Subject[]"]:checked');
+            var subject = Array.from(checkboxes).map(checkbox => checkbox.value);
     
             var formData = new FormData();
     
@@ -157,7 +268,7 @@
         
             formData.append('Title', Title);
             formData.append('Description', Description);
-            formData.append('Subject', Subject);
+            formData.append('Subject', subject);
             formData.append('Location', Location);
             formData.append('ContactInformation', ContactInformation);
             formData.append('PostedDate', PostedDate);  // Include the date in the formData

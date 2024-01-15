@@ -82,7 +82,7 @@
                                 <a class="nav-link active" href="stud_post.html">Create Post</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">About Us</a>
+                                <a class="nav-link active" href="tutor_req.html">Tutor Request</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" href="contact.html">Contact</a>
@@ -166,6 +166,18 @@
             </div>
         </div>
 
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Tutor Request</h5>
+                        <p class="card-text">View and manage your Tutor Request.</p>
+                        <a href="tutor_req.html" class="btn btn-primary">View Request</a>
+                    </div>
+                </div>
+            </div>
+
         <!-- Add more content based on your dashboard features -->
     </div>
 
@@ -182,19 +194,39 @@
 
 
 
+    <section class=" bg-opacity-25 py-5 px-5 mt-5 rounded container-lg" style="background-color: rgb(246, 255, 255);">
+        <div class="container1">
+            <h1 class="text-center mb-4 text-black">Recently Added Tutors</h1>
+            <p class="text-center  text-black px-5">Explore the profiles of our recently added tutors, highly active and ready for tuition opportunities.</p>
+            <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+                <div class="col-md-12">
+                    <div class="card h-100 border-0 bg-light shadow">
+                        <div class="card-body">
+                       
+                            <div class="row" id="tutorGrid">
+                                <!-- Tutor information will be dynamically inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+
+
+
+
+
+    <footer class="footer mt-auto py-3" style="background-color: rgb(189, 241, 241);">
+        <div class="container1 text-center">
+            <span class="text-muted">TutorConnect &copy; 2023</span>
+        </div>
+    </footer>
+
 
     
 
-<footer class="footer mt-auto py-3" style="background-color: rgb(189, 241, 241);">
-    <div class="container text-center">
-        <span class="text-muted">TutorConnect &copy; 2023</span>
-    </div>
-</footer>
- <!--  <p class="card-text">${post.StudentID}</p> -->
-    <!-- Bootstrap JS and Popper.js -->
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
     
 
         
@@ -223,8 +255,8 @@
             var studentInfoContainer = document.getElementById('student-info');
     
             studentInfoContainer.innerHTML = `
-                <div class="card mb-3">
-                    <div class="card-body">
+                <div class="card mb-3 ">
+                    <div class="card-body ">
                         <h5 class="card-title">Student Information</h5>
                         <p class="card-text"><strong>Name:</strong> ${studentData[0].studentName}</p>
                         <p class="card-text"><strong>Email:</strong> ${studentData[0].studentEmail}</p>
@@ -232,13 +264,72 @@
                         <p class="card-text"><strong>Address:</strong> ${studentData[0].studentAddress}</p>
                         <p class="card-text"><strong>City:</strong> ${studentData[0].studentCity}</p>
                         <p class="card-text"><strong>Gender:</strong> ${studentData[0].studentGender}</p>
+                        <p class="card-text"><strong>Class:</strong> ${studentData[0].classSelection}</p>
                     </div>
                 </div>
             `;
         }
     </script>
 
+<script>
 
+function tutorProfilePosts(loggedInTutor) {
+    var tutorCard = document.createElement('div');
+    tutorCard.classList.add('col-md-6', 'col-lg-4','mb-4');
+    tutorCard.innerHTML = `
+        <div class="card h-100 mt-4" >
+            <div class="card-body py-3" style="min-height: 80%; >
+                <div class="card-body  h-80" style="background-color: rgb(189, 241, 241);">
+                <h4 class="card-title">${loggedInTutor.tutorName}</h4>
+
+                <p class="card-text"><strong>Education:</strong> ${loggedInTutor.tutorEducation}</p>
+                <p class="card-text"><strong>Experience:</strong> ${loggedInTutor.tutorExperience}</p>
+                </div>
+
+                <button class="btn btn-primary contact-btn "style="min-height:15%;" onclick="showDetails()">Contact Now</button>
+            </div>
+        </div>
+    `;
+
+    return tutorCard;
+}
+
+
+
+function tutorProfilePostsContainer(tutorPosts) {
+    var tutorPostsContainer = document.getElementById('tutorGrid');
+
+    // Clear existing content
+    tutorPostsContainer.innerHTML = '';
+
+    // Create and append card for each tutor post
+    tutorPosts.forEach(function(loggedInTutor) {
+        var tutorCard = tutorProfilePosts(loggedInTutor);
+        tutorPostsContainer.appendChild(tutorCard);
+    });
+}
+
+// Function to fetch tutor posts from the server for the tutor profile
+function fetchTutorPosts() {
+    const apiUrl = 'http://localhost:5068/api/tutor_reg/GetItems';
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            // Call the tutorProfilePostsContainer function with the fetched data
+            tutorProfilePostsContainer(data);
+        })
+        .catch(error => console.error('Error:', error));
+}
+window.onload = function() {
+  fetchTutorPosts();
+  
+        };
+
+
+
+
+</script>
 
 
 

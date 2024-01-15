@@ -67,8 +67,10 @@ text-align: center;
 } */
 
 .head {
-    background-image: url('/boot/images/tu.jpg'); /* Replace with your image file */
+    background-image: url('/boot/images/hometutor2.jpg'); /* Replace with your image file */
     background-size: cover;
+    background-color: rgba(192, 192, 192, 0.7); /* Adjust the alpha value (0.7 in this case) */
+    background-blend-mode: overlay; 
     background-position: center;
     height: 90vh;
     display: flex;

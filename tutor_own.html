@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="boot/css/bootstrap.min.css" />
     <link rel="stylesheet" href="boot/css/style.css" />
     <link rel="stylesheet" href="boot/icons/font/bootstrap-icons.css">
+
+
+    <script defer src="boot/js/bootstrap.bundle.min.js" ></script>
+
     <!-- Internal Styles -->
     <style>
         body {
@@ -64,10 +68,10 @@
                         <a class="nav-link active" aria-current="page" href="home.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="tutor_reg.html">Become A Tutor</a>
+                        <a class="nav-link active" href="tutor_view.html">View Interest</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="student_reg.html">Be A Student</a>
+                        <a class="nav-link active" href="student_approval.html">View Confirmation</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#">About Us</a>
@@ -76,11 +80,25 @@
                         <a class="nav-link active" href="#">Contact</a>
                     </li>
                 </ul>
+
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Other nav items -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Login 
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="login_std.html">As Student</a></li>
+                            <li><a class="dropdown-item" href="login_tutor.html">As Teacher</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
 </section>
-
+<section>
 <!-- Tutor Dashboard Section -->
 <div class="container">
     <div class="card">
@@ -88,10 +106,48 @@
             <h2 class="card-title text-center mb-4">Tutor Dashboard</h2>
             <div class="row" id="tutorGrid">
                 <!-- Tutor information will be dynamically inserted here -->
+            
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Your interested students post</h5>
+                    <p class="card-text">View your applied posts.</p>
+                    <a href="tutor_view.html" class="btn btn-primary">View Interest</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Connect with Students</h5>
+                    <p class="card-text">See your interested students confirmation </p>
+                    <!-- <a href="#" class="btn btn-primary">Find Tutors</a> -->
+                    <a href="student_approval.html" class="btn btn-primary">Veiw Confirmation</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+</section>
+
+
+
+<section>
+
 
 <!-- Tuition Posts Section -->
 <div class="container mt-4 text-center">
@@ -100,36 +156,50 @@
         <!-- Tuition posts will be dynamically added here -->
     </div>
 </div>
-
+</section>
 <!-- Footer Section -->
+
+<section>
 <footer class="footer mt-auto py-3" style="background-color: rgb(189, 241, 241);">
-    <div class="container text-center">
-        <span class="text-muted">TutorConnect &copy; 2023</span>
+    <div class="container-fluid text-center">
+        <span class="text-muted">Copyright © 2012-2023 TutorConnect. All Rights Reserved.</span>
     </div>
 </footer>
+</section>
+ 
 
 
-    <!-- Function to dynamically generate the tutor grid --> 
 
 
 
 
-<script>
-        function generateTutorGrid(loggedInTutor) {
-           
-        }
 
-        function getLoggedInTutorEmailFromQuery() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('email');
-        }
+ <!-- Function to dynamically generate the tutor grid  -->
 
-        var loggedInTutorEmail = getLoggedInTutorEmailFromQuery();
 
-        fetch(`http://localhost:5068/api/tutor_reg/GetTutorBybyEmail?mail=${loggedInTutorEmail}`)
-            .then(response => response.json())
-            .then(loggedInTutor => {
-               console.log(loggedInTutor);
+
+
+
+
+
+
+
+
+ <script>
+    function getLoggedInTutorEmailFromQuery() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('email');
+    }
+
+    var loggedInTutorEmail = getLoggedInTutorEmailFromQuery();
+ 
+        // alert(loggedInTutorEmail);
+localStorage.setItem('tutorEmail',loggedInTutorEmail)
+
+    fetch(`http://localhost:5068/api/tutor_reg/GetTutorBybyEmail?mail=${loggedInTutorEmail}`)
+        .then(response => response.json())
+        .then(loggedInTutor => {
+            console.log(loggedInTutor);
             var tutorGrid = document.getElementById('tutorGrid');
 
             // Clear existing content
@@ -141,9 +211,11 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">${loggedInTutor[0].tutorName}</h4>
+                        <p class="card-text"><strong>Age:</strong> ${loggedInTutor[0].tutorAge}</p>
                         <p class="card-text"><strong>Contact:</strong> ${loggedInTutor[0].tutorContact}</p>
+                        <p class="card-text"><strong>Gender:</strong> ${loggedInTutor[0].tutorGender}</p>
                         <p class="card-text"><strong>NID Number:</strong> ${loggedInTutor[0].tutorNid}</p>
-                        <p class="card-text"><strong>Address:</strong> ${loggedInTutor[0].tutorAddress}</p>
+                        <p class="card-text"><strong>Location:</strong> ${loggedInTutor[0].tutorAddress}</p>
                         <p class="card-text"><strong>City:</strong> ${loggedInTutor[0].tutorCity}</p>
                         <p class="card-text"><strong>Education:</strong> ${loggedInTutor[0].tutorEducation}</p>
                         <p class="card-text"><strong>Experience:</strong> ${loggedInTutor[0].tutorExperience}</p>
@@ -152,41 +224,217 @@
             `;
 
             tutorGrid.appendChild(tutorCard);
+
+            var tutorGrid = document.getElementById('tutorGrid');
+            var updateProfileButton = document.createElement('button');
+            updateProfileButton.innerText = 'Update Profile';
+            updateProfileButton.classList.add('btn', 'btn-primary');
+            updateProfileButton.onclick = showUpdateForm;
+
+            tutorGrid.appendChild(updateProfileButton);
+
+            function showUpdateForm() {
+                // Clear existing content
+                tutorGrid.innerHTML = "";
+
+                var updateForm = document.createElement('form');
+                updateForm.id = 'updateForm';
+                updateForm.style.marginTop = '20px';
+
+                // Populate the form with existing tutor details
+                updateForm.innerHTML = `
+                    <label for="tutorName">Name:</label>
+                    <input type="text" id="tutorName" name="tutorName" value="${loggedInTutor[0].tutorName}" class="form-control" required>
+
+                    <label for="tutorAge">Age:</label>
+                    <input type="text" id="tutorAge" name="tutorAge" value="${loggedInTutor[0].tutorAge}" class="form-control" required>
+
+                    <label for="tutorContact">Contact:</label>
+                    <input type="text" id="tutorContact" name="tutorContact" value="${loggedInTutor[0].tutorContact}" class="form-control" required>
+
+                    <label for="tutorGender">Gender:</label>
+                    <input type="text" id="tutorGender" name="tutorGender" value="${loggedInTutor[0].tutorGender}" class="form-control" required>
+
+                    <label for="tutorNid">NID Number:</label>
+                    <input type="text" id="tutorNid" name="tutorNid" value="${loggedInTutor[0].tutorNid}" class="form-control" required>
+
+                    <label for="tutorAddress">Location:</label>
+                    <input type="text" id="tutorAddress" name="tutorAddress" value="${loggedInTutor[0].tutorAddress}" class="form-control" required>
+
+                    <label for="tutorCity">City:</label>
+                    <input type="text" id="tutorCity" name="tutorCity" value="${loggedInTutor[0].tutorCity}" class="form-control" required>
+
+                    <label for="tutorEducation">Education:</label>
+                    <input type="text" id="tutorEducation" name="tutorEducation" value="${loggedInTutor[0].tutorEducation}" class="form-control" required>
+
+                    <label for="tutorExperience">Experience:</label>
+                    <input type="text" id="tutorExperience" name="tutorExperience" value="${loggedInTutor[0].tutorExperience}" class="form-control" required>
+                    <input type="hidden" name="tutorEmail" id="emailbo">
+                    <div style="margin-top: 20px;">
+                        <button type="button" class="btn btn-primary" onclick="updateTutorProfile()">Update</button>
+                        <button type="button" class="btn btn-secondary" onclick="cancelUpdate()">Cancel</button>
+                    </div>
+                `;
+
+                tutorGrid.appendChild(updateForm);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching tutor information:', error);
+        });
+
+    function updateTutorProfile() {
+        const updatedTutor = {
+            id:0,
+            tutorName: document.getElementById('tutorName').value,
+            tutorAge: document.getElementById('tutorAge').value,
+            tutorEmail:loggedInTutorEmail,
+            tutorPassword: "1234",
+            tutorGender: document.getElementById('tutorGender').value,
+            tutorContact: document.getElementById('tutorContact').value,
+            tutorNid: document.getElementById('tutorNid').value,
+            tutorAddress: document.getElementById('tutorAddress').value,
+            tutorCity: document.getElementById('tutorCity').value,
+            tutorEducation: document.getElementById('tutorEducation').value,
+            tutorExperience: document.getElementById('tutorExperience').value,
+           
+            
+   
+            // collect updated data
+        };
+        console.log('Updated Tutor:', updatedTutor);
+
+
+
+        fetch(`http://localhost:5068/api/tutor_reg/UpdateTutor/${loggedInTutorEmail}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedTutor),
+        })
+            .then(response => {
+                if (response.ok) {
+                    // window.location.reload();
+                    alert("Profile Updated"); // Reload the page after successful update
+                } else {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+              return response.text();
             })
-            .catch(error => {
-                console.error('Error fetching tutor information:', error);
-            });
-    </script> 
+            .catch(error => console.error('Error updating tutor profile:', error));
+    }
+
+    function cancelUpdate() {
+        window.location.href = '/tutor_own.html?email=' + loggedInTutorEmail;
+    }
+</script>
 
 
 
 
 
 <script>
+    
     // Function to create a card for each tuition post in the newsfeed
-    function createNewsfeedTuitionPostCard(post) {
+    function createNewsfeedTuitionPostCard(post,loggedInTutorEmail) {
         var card = document.createElement('div');
         card.className = 'col-md-12 mb-4';
         card.innerHTML = `
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">${post.title}</h5>
-                    <p class="card-text"><strong>Student ID:</strong> ${post.studentID}</p>
+                    <h5 class="card-title">${post.title}</h3>
+                
                     <p class="card-text">${post.description}</p>
                     <p class="card-text"><strong>Subject:</strong> ${post.subject}</p>
                     <p class="card-text"><strong>Location:</strong> ${post.location}</p>
                     <p class="card-text"><strong>Contact:</strong> ${post.contactInformation}</p>
-                    <p class="card-text"><strong>Posted Date:</strong> ${post.postedDate}</p>
+                   
+                    
                     
                     <!-- Button to express interest -->
-                    <button class="btn btn-primary express-interest-btn" data-post-id="${post.postID}">
-                        Express Interest
-                    </button>
+                    <button class="btn btn-primary express-interest-btn" onclick="expressInterestClicked('${post.postID}', '${post.studentID}','${loggedInTutorEmail}')">
+                    Express Interest
+                </button>
                 </div>
             </div>
         `;
         return card;
     }
+    function expressInterestClicked(postID,studentID,loggedInTutorEmail) {
+        document.querySelector(".express-interest-btn").style.display='none';
+        function getLoggedInTutorEmailFromQuery() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('email');
+        }
+        var loggedInTutorEmail = getLoggedInTutorEmailFromQuery();
+//         alert(loggedInTutorEmail);
+// localStorage.setItem('tutorEmail',loggedInTutorEmail)
+
+        fetch(`http://localhost:5068/api/tutor_reg/GetTutorBybyEmail?mail=${loggedInTutorEmail}`)
+            .then(response => response.json())
+            .then(loggedInTutor => {
+               console.log(loggedInTutor);
+
+
+
+
+
+               
+    // console.log(`Express Interest clicked for post with ID: ${postID}`);
+    
+    // console.log(`Express Interest clicked for post with ID: ${studentID}`);
+    
+    // console.log(`Express Interest clicked for post with ID: ${loggedInTutorEmail}`);
+    
+    // console.log(`Express Interest clicked for post with ID: ${loggedInTutor[0].tutorContact}`);
+
+    // console.log(`Express Interest clicked for post with ID: ${loggedInTutor[0].tutorName}`);
+
+    // console.log(`Express Interest clicked for post with ID: ${loggedInTutor[0].tutorEducation}`);
+
+
+    fetch('http://localhost:5068/api/tutor_book/AddTutorBook', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+        postID: postID,
+        studentID: studentID,
+    
+
+        tutorEmail: loggedInTutorEmail,
+        tutorContact: loggedInTutor[0].tutorContact,
+        tutorName: loggedInTutor[0].tutorName,
+        tutorEducation: loggedInTutor[0].tutorEducation
+        // Add other required properties as needed
+    }),
+})
+
+            .then(response => response.text())
+            .then(data => {
+                console.log('Success:', data);
+                alert("Express Interest confirmed");
+                // Handle success response here
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // Handle error here
+            });
+        });
+}
+
+
+
+
+
+
+
+
+
+
+
 
     // Function to render tuition posts in the newsfeed
     function renderNewsfeedTuitionPosts(tuitionPosts) {
@@ -194,31 +442,20 @@
 
         // Clear existing content
         tuitionPostsContainer.innerHTML = '';
-
+        console.log(loggedInTutorEmail);
         // Create and append card for each tuition post in the newsfeed
         tuitionPosts.forEach(function(post) {
-            var card = createNewsfeedTuitionPostCard(post);
+            var card = createNewsfeedTuitionPostCard(post,loggedInTutorEmail);
             tuitionPostsContainer.appendChild(card);
         });
 
         // Add event listener for the Express Interest buttons
-        addExpressInterestListeners();
+     
     }
 
-   
+    
 
-    // Function to add event listeners for Express Interest buttons
-    function addExpressInterestListeners() {
-        var expressInterestButtons = document.querySelectorAll('.express-interest-btn');
-
-        expressInterestButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                var postID = this.getAttribute('data-post-id');
-                expressInterest(postID);
-            });
-        });
-    }
-
+    
     // Function to fetch tuition posts from the server for the newsfeed
     function fetchNewsfeedTuitionPosts() {
         const apiUrl = 'http://localhost:5068/api/post/GetPost';
@@ -232,15 +469,43 @@
             .catch(error => console.error('Error:', error));
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Call the fetchNewsfeedTuitionPosts function when the page loads
     window.onload = function() {
         fetchNewsfeedTuitionPosts();
     };
 
-    // renderNewsfeedTuitionPosts(data); // You can uncomment this line if you want to render posts immediately on page load
-    // addExpressInterestListeners(); // You can uncomment this line if you want to add listeners immediately on page load
+
+
+
+
 </script>
+
+<!-- <script>
+
+
     
+</script> -->
+
+
 
 
 

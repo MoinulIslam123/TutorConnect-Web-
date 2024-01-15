@@ -4,15 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TutorConnect</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:ital,wght@1,100&display=swap" rel="stylesheet">
+
+  
+
+   <!-- Your custom styles -->
+   <link rel="stylesheet" href="boot/css/style.css">
+  
+   <script src="https://kit.fontawesome.com/7efacc70f0.js" crossorigin="anonymous"></script>
+
+
+
+    <link rel="stylesheet" href="boot/css/bootstrap.min.css" />
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="boot/icons/font/bootstrap-icons.css">
+
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <!-- Your custom styles -->
-    <link rel="stylesheet" href="boot/css/style.css">
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="boot/icons/font/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+   
+    
 
 
+
+
+<!-- javascript link -->
 <script defer src="boot/js/bootstrap.bundle.min.js" ></script>
+<script src="boot/js/jquery.slim.min.js"></script>
 
 
 <style>
@@ -28,6 +48,8 @@ body {
         top: 0;
         z-index: 1000;
     }
+  
+
 
 
 
@@ -93,17 +115,229 @@ body {
   
 
 <!-- ---------------------------- -->
-
-
-<section>
-
-    <div class="container mt-4 text-center">
-        <h3 class="mb-4">Tuition Posts</h3>
-        <div class="row" id="tuition-posts-container">
-            <!-- Tuition posts will be dynamically added here -->
+ <!-- Who can use -->
+ <section class="py-5 px-5 mt-5 rounded container-lg text-center g-4">
+  <h2 class="user-title">Who can use</h2>
+  <p class="description">Category of users and their description</p>
+  <div class="row row-cols-1 row-cols-md-2">
+    <div class="col">
+      <div class="card">
+        <img src="boot/images/Teacher panels.jpg" class="card-img-top img-fluid" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Educator Panel</h5>
+          
+          <p class="card-text">Tutors craft detailed profiles showcasing their educational background, teaching experience, and availability. They set subject expertise, hourly rates, manage schedules, engage in a messaging system, and track payments and feedback, creating a dynamic hub for their tutoring services.</p>
+          <i class="bi bi-arrow-right-circle-fill " style="font-size:25px; color: rgb(10, 157, 231);"></i>
         </div>
+      </div>
     </div>
+    <div class="col">
+      <div class="card">
+        <img src="boot/images/Parents panels.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Students/Parents Panel</h5>
+          <p class="card-text">Students create profiles, search for tutors based on subjects and ratings, schedule appointments, communicate through messaging, manage payments, and provide feedback. The panel serves as a personalized gateway for students to connect with qualified tutors and navigate their educational journey efficiently.</p>
+          <i class="bi bi-arrow-right-circle-fill" style="font-size:25px; color: rgb(10, 157, 231);"></i>
+        </div>
+      </div>
+    </div>
+    
+  </div>
 
+</section>
+
+<!-- who can use end -->
+
+
+<!-- What we Offer starts -->
+
+<section class="mt-5 text-center container-lg b  py-5 px-5 ">
+  <h2>What we offer</h2>
+  <p class="description">We offer following feature for the user</p>
+     <!-- using card -->
+  <div class="row row-cols-1 row-cols-md-3  g-4 container-lg ">
+   <!-- card-1 -->
+   <div class="col">
+     <div class=" h-100 shadow p-3 mb-5 bg-body-light">
+      <i class="fa-solid fa-location-dot p-5 " style="font-size:50px; color: rgb(10, 157, 231) ; "></i>
+       <div class="card-body">
+         <h5 class="card-title">Search by location</h5>
+         <p class="card-text ">Both tutor and parents can search by specific location of tution</p>
+       </div>
+     </div>
+   </div>
+
+   <!-- card 2 -->
+   <div class="col ">
+     <div class=" h-100  shadow p-3 mb-5 bg-body-light">
+      <i class="fa-solid fa-book p-5 "  style="font-size:50px; color: rgb(10, 157, 231);"></i>
+       <div class="card-body">
+         <h5 class="card-title">Find subjects</h5>
+         <p class="card-text">Parents can find easily find for desirable subject for their child. </p>
+        
+       </div>
+     </div>
+   </div>
+   <!-- card 3 -->
+   <div class="col">
+     <div class=" h-100  shadow p-3 mb-5 bg-body-light">
+      <i class="fa-regular fa-message p-5"  style="font-size:50px; color: rgb(10, 157, 231);"></i>
+       <div class="card-body">
+         <h5 class="card-title">Rating</h5>
+         <p class="card-text">Parents can rating to the tutors as their performance</p>
+      
+       </div>
+     </div>
+   </div>
+
+  
+   <!-- card 4 -->
+   <div class="col">
+     <div class=" h-100  shadow p-3 mb-5 bg-body-light">
+    <i class="fa-regular fa-user p-5"  style="font-size:50px; color: rgb(10, 157, 231);"></i>
+       <div class="card-body">
+         <h5 class="card-title">Home Tutor</h5>
+         <p class="card-text">In-person instruction can be provided by the tutor at the student's residence.</p>
+         
+       </div>
+     </div>
+   </div> 
+   <!-- card 5 -->
+   <div class="col">
+     <div class=" h-100  shadow p-3 mb-5 bg-body-light">
+      <i class="fa-solid fa-user p-5"  style="font-size:50px; color: rgb(10, 157, 231);"></i>
+       <div class="card-body">
+         <h5 class="card-title">Outside Tutor</h5>
+         <p class="card-text">To ensure that every student receives the best instruction possible, an outside tutor can instruct a large group of students at once.</p>
+         <img src="images/Frame.png"class="mx-auto d-block" alt="">
+       </div>
+     </div>
+   </div> 
+   <!-- card 6 -->
+   <div class="col">
+     <div class=" h-100  shadow p-3 mb-5 bg-body-light">
+      <i class="fa-regular fa-clock p-5"  style="font-size:50px; color: rgb(10, 157, 231);"></i>
+       <div class="card-body">
+         <h5 class="card-title">Available 24/7 days</h5>
+         <p class="card-text">
+          While students benefit from a round-the-clock portal for seamless learning, tutors may manage their profiles and communicate with students via our platform, which provides flexibility and 24/7 accessibility.</p>
+        
+       </div>
+     </div>
+   </div> 
+    </div>
+</section>
+<!-- What we Offer Ends -->
+
+
+
+
+
+<!-- tuition-post starts -->
+
+<section  class=" bg-info bg-opacity-25 h-100 py-5 px-5 mt-5 rounded container-lg">
+
+   
+  <h1 class="text-center ">TUTION POSTS </h1>
+  <P class="text-center mb-5 px-5">Featured tutors are verified and more trusted than general tutors. We always recommend to search for a  premium tutor other than general tutors.</P>
+  
+ 
+  <div class="card d-flex flex-row  flex-wrap justify-content-between" id="tuition-posts-container">
+    <!-- Tuition posts will be dynamically added here -->
+
+</div>
+
+</section>
+
+<!-- tution-post ends -->
+
+
+
+
+
+
+
+
+
+
+    <!-- Premium tutors -->
+    <section class=" bg-info bg-opacity-25 py-5 px-5 mt-5 rounded container-lg">
+        <h1 class="text-center ">Premium Tutors </h1>
+        <P class="text-center mb-5 px-5">Featured tutors are verified and more trusted than general tutors. We always recommend to search for a  premium tutor other than general tutors.</P>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card h-100">
+                <img src="boot/images/user-1.png" class="card-img-top mx-auto mt-3" alt="..."  style="width: 100px">
+                <div class="card-body">
+                  <h5 class="card-title">Sakib Khan</h5>
+                  <p class="card-text">Welcome to my profile. I'm Sakib Khan from Natun Bazar, Dhaka, Bangladesh. I've completed Post-Graduate from a reputed Institute. Now, I'm a govt. job seeker. I would like to teach English, Mathematics, Bangla, BGS, GS, GK, Computer Operations and any subject.Thanks.</p>
+                </div>
+                <!-- <div class="card-footer">
+                  <small class="text-body-secondary"></small>
+                </div> -->
+                <div class="card-footer">
+              <a class="nav-link bg-primary-subtle focus-ring p-2" href="student_reg.html" id="viewDetailsButton"><p class="text-center text-aqua mt-1">View Details</p></a>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-100">
+                <img src="boot/images/anis.jpg" class="card-img-top mx-auto mt-3" alt="..."  style="width: 100px">
+                <div class="card-body">
+                  <h5 class="card-title">Anisul Haque</h5>
+                  <p class="card-text">Greetings via my profile. My name is Anisul Haque, and I'm a Bangladeshi native from Mirpur, Dhaka. I graduated from Rajshahi University with a postgraduate degree. Right now, I work as a teacher on this platform, and I do my work quickly and effectively as I can. I'll do my hardest to teach you the arts. And I'll offer services to everyone who is interested in graphic design.</p>
+                </div>
+           
+                <!-- <div class="card-footer">
+                  <small class="text-body-secondary">ARTS, GRAPHICS DESIGN</small>
+                </div> -->
+                <div class="card-footer">
+                    <a class="nav-link bg-primary-subtle focus-ring p-2" href="student_reg.html" id="viewDetailsButton"><p class="text-center text-aqua mt-1">View Details</p></a>
+                    
+                </div>
+              </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                  <img src="boot/images/user-7.png" class="card-img-top mx-auto mt-3" alt="..."  style="width: 100px">
+                  <div class="card-body">
+                    <h5 class="card-title">Jahirul Alam</h5>
+                    <p class="card-text" >Greetings via my profile. My name is Jahirul Alam, and I'm a Bangladeshi native from Mirpur, Dhaka. I graduated from Rajshahi University with a postgraduate degree. Right now, I work as a teacher on this platform, and I do my work quickly and effectively as I can. I'll do my hardest to teach you the arts. And I'll offer services to everyone who is interested in graphic design.</p>
+                  </div>
+                  <!-- <div class="card-footer">
+                    <small class="text-body-secondary">ARTS, GRAPHICS DESIGN</small>
+                  </div> -->
+                  <div class="card-footer">
+                      <a class="nav-link bg-primary-subtle focus-ring p-2" href="student_reg.html" id="viewDetailsButton"><p class="text-center text-aqua mt-1">View Details</p></a>
+                        </div>
+                </div>
+              </div>
+       
+    </section>
+
+    <!-- premium tutors end -->
+
+
+
+
+
+<section class="bg-info bg-opacity-25 py-5 px-5 mt-5 rounded container-lg">
+  <div class="container">
+      <h1 class="text-center mb-4 text-black">Recently Added Tutors</h1>
+      <p class="text-center mb-5 text-black px-5">Explore the profiles of our recently added tutors, highly active and ready for tuition opportunities.</p>
+      <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+          <div class="col-md-12">
+              <div class="card h-100 border-0 bg-light shadow">
+                  <div class="card-body">
+                 
+                      <div class="row" id="tutorGrid">
+                          <!-- Tutor information will be dynamically inserted here -->
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </section>
 
 
@@ -112,49 +346,138 @@ body {
 
 
 
-
-
-
-
-
-<footer class="footer mt-auto py-3" style="background-color: rgb(189, 241, 241);">
+<!-- <footer class="footer mt-auto py-3" style="background-color: rgb(189, 241, 241);">
     <div class="container text-center">
         <span class="text-muted">TutorConnect &copy; 2023</span>
     </div>
-</footer>
+</footer> -->
 
-<!-- 
-      <script src="js/jquery.slim.min.js"></script>
-      <script src="js/bootstrap.min.js"></script> -->
+<footer class="bg-primary-subtle p-3 mt-5">
+    <div class="container text-center">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+        <div class="col">
+            <h3>TutorConnector</h3>
+          <img src="images/logo2.png" alt="">
+          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
+        </div>
+        <div class="col">
+          <h3>Usefull Link</h3>
+          <nav class="navbar justify-content-center">
+          <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Terms & Conditions</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="tutor_reg.html">Find Tutors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="student_reg.html">Hire A Tutor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Find Tution</a>
+                </li>
+              
+              </ul>
+            
+          </nav>
 
 
+        </div>
+        <div class="col">
+          <h3>Office Address</h3>
+          <p class="mt-4">House: 22, Road: 4</p>
+          <p>Block: C, Banani</p>
+          <p>Dhaka, Bangladesh.</p>
+          
+         
+        </div>
+        <div class="col ">
+          <h3>Social</h3>
+           <div class="d-flex flex-column justify-content-center mt-4">
+           
+          <a href="" target="_blank"><img style="height: 30px; width: 20px;" src="/boot/icons/facebook.svg" alt="">Facebook</a>
+          <a href="" target="_blank"><img style="height: 30px; width: 20px;" src="/boot/icons/instagram.svg" alt="">Instagram</a>
+          <a href="" target="_blank"><img style="height: 30px; width: 20px;" src="/boot/icons/twitter.svg" alt="">Twitter</a>
+         
+           </div>
+
+           <!-- download app -->
+           <div class="mt-2">
+            <h3>Get the app</h3>
+              <div class="d-flex justify-content-center">
+                 <img style="height: 40px;"  src="/boot/icons/ios.png" alt="">
+                <img style="height: 40px;" src="/boot/icons/android.png" alt="">
+                 </div>
+           </div>
+          
+           </div>
+          
+        </div>
+      </div>
+    </div>
+      <p class="text-center pt-5 fw-semibold">Copyright © 2012-2023 TutorConnect. All Rights Reserved.</p>
+   </footer>
 
       <script>
-        // Function to create a card for each tuition post in the newsfeed
+      
+
+
         function createNewsfeedTuitionPostCard(post) {
-            var card = document.createElement('div');
-            card.className = 'col-md-12 mb-4';
-            card.innerHTML = `
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">${post.title}</h5>
-                        <p class="card-text"><strong>Student ID:</strong> ${post.studentID}</p>
-                        <p class="card-text">${post.description}</p>
-                        <p class="card-text"><strong>Subject:</strong> ${post.subject}</p>
-                        <p class="card-text"><strong>Location:</strong> ${post.location}</p>
-                        <p class="card-text"><strong>Contact:</strong> ${post.contactInformation}</p>
-                        <p class="card-text"><strong>Posted Date:</strong> ${post.postedDate}</p>
-                        
-                        <!-- Button to express interest -->
-                        <button class="btn btn-primary express-interest-btn" data-post-id="${post.postID}">
-                            Express Interest
-                        </button>
-                    </div>
-                </div>
-            `;
-            return card;
-        }
+          const card = document.createElement('div');
+         card.className = 'flex-row';
+
+// Set the space between items to create some gap between the cards
+        // card.style.gap = '20px';
+        // card.style.width = '300px';
+
+
+
+   
+        
+       
+
+    card.innerHTML = `
+    <div class="card h-90 m-3" style="width: 300px;">
+       
+        <div class="card-body  w-20 m-1">
+            <h5 class="card-title">${post.title}</h5>
+            
+            <p class="card-text">${post.description}</p>
+            <p class="card-text"><strong>Subject:</strong> ${post.subject}</p>
+
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-primary express-interest-btn text-center" onclick="showRegistration()" data-post-id="${post.postID}">
+                    Express Interest
+                </button>
+        </div>
+      </div>
     
+`;
+// <p class="card-text"><strong>Location:</strong> ${post.location}</p>
+//             <p class="card-text "><strong>Contact:</strong> ${post.contactInformation}</p>
+//                 <p class="card-text"><strong>Posted Date:</strong> ${post.postedDate}</p>
+// <p class="card-text"><strong>Student ID:</strong> ${post.studentID}</p>
+return card;
+}
+
+function showRegistration() {
+        alert("Are You sure want to register as Tutor?");
+        window.location.href = "tutor_reg.html";
+    }
+
+    var viewDetailsButton = document.getElementById('viewDetailsButton');
+
+// Add an event listener to the button
+viewDetailsButton.addEventListener('click', function() {
+    // Show an alert message
+    alert('You have to register first.');
+});
+
+
+
+
+
         // Function to render tuition posts in the newsfeed
         function renderNewsfeedTuitionPosts(tuitionPosts) {
             var tuitionPostsContainer = document.getElementById('tuition-posts-container');
@@ -171,6 +494,8 @@ body {
             // Add event listener for the Express Interest buttons
             addExpressInterestListeners();
         }
+
+        
     
         // Function to handle the express interest action
         function expressInterest(postID) {
@@ -202,15 +527,107 @@ body {
                 })
                 .catch(error => console.error('Error:', error));
         }
-    
-        // Call the fetchNewsfeedTuitionPosts function when the page loads
-        window.onload = function() {
-            fetchNewsfeedTuitionPosts();
-        };
-    
-        // renderNewsfeedTuitionPosts(data); // You can uncomment this line if you want to render posts immediately on page load
-        // addExpressInterestListeners(); // You can uncomment this line if you want to add listeners immediately on page load
-    </script>
+   
+
+   
       
+      // tutor profile starts
+      function tutorProfilePosts(loggedInTutor) {
+    var tutorCard = document.createElement('div');
+    tutorCard.classList.add('col-md-6', 'col-lg-4');
+    tutorCard.innerHTML = `
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">${loggedInTutor.tutorName}</h4>
+                <p class="card-text"><strong>Education:</strong> ${loggedInTutor.tutorEducation}</p>
+                <p class="card-text"><strong>Experience:</strong> ${loggedInTutor.tutorExperience}</p>
+                <button class="btn btn-primary contact-btn" onclick="show('${encodeURIComponent(JSON.stringify(loggedInTutor))}')">View Details</button>
+            </div>
+        </div>
+    `;
+
+    return tutorCard;
+}
+
+function show(loggedInTutorJSON) {
+    var loggedInTutor = JSON.parse(decodeURIComponent(loggedInTutorJSON));
+
+    alert(`
+        Name: ${loggedInTutor.tutorName}
+        Age: ${loggedInTutor.tutorAge}
+        Contact: ${loggedInTutor.tutorContact}
+        Gender: ${loggedInTutor.tutorGender}
+        NID Number: ${loggedInTutor.tutorNid}
+        Location: ${loggedInTutor.tutorAddress}
+        City: ${loggedInTutor.tutorCity}
+        Education: ${loggedInTutor.tutorEducation}
+        Experience: ${loggedInTutor.tutorExperience}
+    `);
+
+    // window.location.href = "student_reg.html";
+}
+
+
+function tutorProfilePostsContainer(tutorPosts) {
+    var tutorPostsContainer = document.getElementById('tutorGrid');
+
+    // Clear existing content
+    tutorPostsContainer.innerHTML = '';
+
+    // Create and append card for each tutor post
+    tutorPosts.forEach(function(loggedInTutor) {
+        var tutorCard = tutorProfilePosts(loggedInTutor);
+        tutorPostsContainer.appendChild(tutorCard);
+    });
+}
+
+// Function to fetch tutor posts from the server for the tutor profile
+function fetchTutorPosts() {
+    const apiUrl = 'http://localhost:5068/api/tutor_reg/GetItems';
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            // Call the tutorProfilePostsContainer function with the fetched data
+            tutorProfilePostsContainer(data);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+
+
+
+// Call the fetchTutorPosts function when the page loads
+window.onload = function() {
+  fetchTutorPosts();
+    fetchNewsfeedTuitionPosts();
+        };
+
+
+
+
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

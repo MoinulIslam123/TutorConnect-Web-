@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Confirmation</title>
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="boot/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="boot/css/style.css" />
+    <link rel="stylesheet" href="boot/icons/font/bootstrap-icons.css">
+    <script defer src="boot/js/bootstrap.bundle.min.js" ></script>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .status-card {
+            border: 1px solid #dee2e6;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        hr {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+
+<!-- Navigation Section -->
+<section>
+    <nav class="navbar navbar-expand-lg" style="background-color: rgb(189, 241, 241);">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">TutorConnect</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Navigation Links -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="tutor_view.html">View Interest</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="tutor_own.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Contact</a>
+                    </li>
+                </ul>
+
+
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Other nav items -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Login 
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="login_std.html">As Student</a></li>
+                            <li><a class="dropdown-item" href="login_tutor.html">As Teacher</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section>
+    <div class="container text-center">
+        <h2>Student Approval Status</h2>
+        <div id="status-container" class="row justify-content-center"></div>
+    </div>
+
+</section>
+
+
+
+        <footer class="footer mt-auto py-3" style="background-color: rgb(189, 241, 241);">
+            <div class="container-fluid text-center">
+                <span class="text-muted">Copyright © 2012-2023 TutorConnect. All Rights Reserved.</span>
+            </div>
+        </footer>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                // Retrieve Tutor Email from localStorage (changed variable name)
+                var tutorEmail = localStorage.getItem('tutorEmail');
+        
+                // alert(tutorEmail);
+               
+                // Fetch data from the API using the tutorEmail (changed variable name)
+                fetch(`http://localhost:5068/api/tutor_confirm/GetTutorConfirm?tutorEmail=${tutorEmail}`)
+                    .then(response => response.json())
+                    .then(data => {
+                      
+                        
+
+                            // Display fetched data on the page (modify as needed)
+                            const statusContainer = document.getElementById('status-container');
+            
+                            if (data && data.length > 0) {
+                                data.forEach(element => {
+                                    if(element.tutorEmail===tutorEmail){
+
+                                        const statusElement = document.createElement('div');
+                                        statusElement.className = 'col-md-6';
+                                        statusElement.innerHTML = `
+                                            <div class="card status-card">
+                                                <p class="mb-2"><strong>Student ID:</strong> ${element.studentId}</p>
+                                                <p class="mb-2"><strong>Tutor Email:</strong> ${element.tutorEmail}</p>
+                                                <p class="mb-2"><strong>Status:</strong> ${element.tutorAccept ? 'Accepted' : 'Rejected'}</p>
+                                                <hr>
+                                            </div>
+                                        `;
+                                        statusContainer.appendChild(statusElement);
+                                    }
+                                });
+                            } else {
+                                statusContainer.innerHTML = '<p>No approval status available.</p>';
+                            }
+                        
+                    })
+                    .catch(error => {
+                        console.error('Error fetching data:', error);
+                        // Handle errors appropriately
+                    });
+            });
+        </script>
+        
+</body>
+</html>

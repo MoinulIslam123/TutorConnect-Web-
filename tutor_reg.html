@@ -90,85 +90,124 @@
 
 
 
-      <div id="registration-container">
+    <div id="registration-container">
         <div class="card">
             <div class="card-body text-center">
                 <h2 class="card-title text-center mb-4">Tutor Registration</h2>
                 <form id="registrationForm" >
-                    <!-- onsubmit="return validateForm()" -->
                     <div class="mb-3">
                         <label for="TutorName" class="form-label">Tutor Name:</label>
                         <input type="text" id="TutorName" name="TutorName" class="form-control" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="TutorAge" class="form-label">Age:</label>
+                        <input type="number" id="TutorAge" name="TutorAge" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
                         <label for="TutorEmail" class="form-label">Email:</label>
                         <input type="email" id="TutorEmail" name="TutorEmail" class="form-control" required>
                     </div>
-
+    
                     <div class="mb-3">
                         <label for="TutorPassword" class="form-label">Password:</label>
                         <input type="password" id="TutorPassword" name="TutorPassword" class="form-control" required>
                     </div>
                     
+                    <div class="mb-3 ">
+                        <label for="TutorGender" class="form-label">Gender:</label>
+                        <select id="TutorGender" name="TutorGender" class="form-control" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                    </div>
 
                     <div class="mb-3">
                         <label for="TutorContact" class="form-label">Contact Number:</label>
                         <input type="tel" id="TutorContact" name="TutorContact" class="form-control" required>
                     </div>
-
+    
                     <div class="mb-3">
                         <label for="TutorNid" class="form-label">NID Number:</label>
                         <input type="tel" id="TutorNid" name="TutorNid" class="form-control" required>
                     </div>
-
-
+    
                     <div class="mb-3">
                         <label for="TutorAddress" class="form-label">Address:</label>
-                        <textarea id="TutorAddress" name="TutorAddress" class="form-control" required></textarea>
+                        <select id="TutorAddress" name="TutorAddress" class="form-control" required>
+                            <option value="Mirpur">Mirpur</option>
+                            <option value="Uttara">Uttara</option>
+                            <option value="Banani">Banani</option>
+                            <option value="Basundhara">Basundhara</option>
+                            <option value="Natun_Bazar">Natun Bazar</option>
+                            <option value="Badda">Badda</option>
+                            <option value="Tejgaon">Tejgaon</option>
+                            <option value="Baridhara">Baridhara</option>
+                            <option value="Khilkhet">Khilkhet</option>
+                            <option value="Malibag">Malibag</option>
+                            <option value="Razarbag">Razarbag</option>
+                            <option value="Shyamoli">Shyamoli</option>
+                            <option value="Mohammadpur">Mohammadpur</option>
+                            <!-- Add more options as needed -->
+                        </select>
                     </div>
-
+    
                     <div class="mb-3">
                         <label for="TutorCity" class="form-label">City:</label>
                         <input type="text" id="TutorCity" name="TutorCity" class="form-control" required>
                     </div>
+    
+                    <!-- <div class="mb-3">
+                        <label for="TutorEducation" class="form-label">Education:</label>
+                        <input type="text" id="TutorEducation" name="TutorEducation" class="form-control" required>
+                    </div> -->
+                    
+
 
                     <div class="mb-3">
                         <label for="TutorEducation" class="form-label">Education:</label>
-                        <input type="text" id="TutorEducation" name="TutorEducation" class="form-control" required>
+                        <select id="TutorEducation" name="TutorEducation" class="form-control" required>
+                            <option value="DhakaVarsity">Dhaka Varsity </option>
+                            <option value="Jahangirnagar">Jahangirnagor </option>
+                            <option value="Buet">BUET </option>
+                            <option value="UIU">United International University </option>
+                            <option value="Southeast">South East </option>
+                            <option value="Bup">BUP </option>
+                            <option value="Mist">MIST </option>
+                            <!-- Add more university options as needed -->
+                        </select>
                     </div>
 
-                    
+
 
                     <div class="mb-3">
                         <label for="TutorExperience" class="form-label">Teaching Experience:</label>
                         <input type="number" id="TutorExperience" name="TutorExperience" class="form-control" required>
                     </div>
-
-                    <button type="submit" class="btn btn-primary btn-block"    onclick="submitForm(event)">Register</button>
+    
+                   
+    
+                   
+    
+                    <button type="submit" class="btn btn-primary btn-block" onclick="submitForm(event)">Register</button>
                 </form>
             </div>
         </div>
     </div>
-
-
-
-
-
+    
     <footer class="footer mt-auto py-3" style="background-color: rgb(189, 241, 241);">
         <div class="container text-center">
             <span class="text-muted">TutorConnect &copy; 2023</span>
         </div>
     </footer>
-    <!-- Add Bootstrap JS and Popper.js scripts (required for Bootstrap) -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+
+
+
 
     <script>
-        // function validateForm() {
-        //     // Your validation logic...
 
-        //     return false;
-        // }
 
 
         function submitForm(event) {
@@ -177,8 +216,10 @@
         console.log('Button clicked!');
 
             var TutorName = document.getElementById('TutorName').value;
+            var TutorAge = document.getElementById('TutorAge').value;
             var TutorEmail = document.getElementById('TutorEmail').value;
             var TutorPassword = document.getElementById('TutorPassword').value;
+            var TutorGender = document.getElementById('TutorGender').value;
             var TutorContact = document.getElementById('TutorContact').value;
             var TutorNid = document.getElementById('TutorNid').value;
             var TutorAddress = document.getElementById('TutorAddress').value;
@@ -189,8 +230,10 @@
             var formData = new FormData();
             
             formData.append('TutorName', TutorName);
+            formData.append('TutorAge', TutorAge);
             formData.append('TutorEmail', TutorEmail);
             formData.append('TutorPassword', TutorPassword);
+            formData.append('TutorGender', TutorGender);
             formData.append('TutorContact', TutorContact);
             formData.append('TutorNid', TutorNid);
             formData.append('TutorAddress', TutorAddress);
